@@ -5,10 +5,8 @@ const defaultState = {
   list: []
 }
 const reducer = (state = defaultState, action) => {
-  console.log(action.type, 'csss');
   switch (action.type) {
     case CHANGE_LIST:
-      console.log(action.type, 'csss11111');
 
       return {
         ...state,

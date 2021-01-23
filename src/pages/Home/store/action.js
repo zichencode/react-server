@@ -1,10 +1,8 @@
-import axios from 'axios'
 import { CHANGE_LIST } from './constant'
 
 export const getHomeList = () => {
-  return (dispatch) => {
-    return axios.get('http://localhost:3006/list').then(res => {
-      console.log(dispatch , 'pch');
+  return (dispatch,getState, request) => {
+    return request.get('/api/list').then(res => {
       dispatch({
         type: CHANGE_LIST,
         list: res.data.data

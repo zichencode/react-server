@@ -1,20 +1,21 @@
 import React, { PureComponent } from 'react';
-import Header from '../../components/Header'
 import { connect } from 'react-redux'
 import { getHomeList } from './store/action'
 class Home extends PureComponent {
 	componentDidMount() {
-		console.log(this.props, 'props');
-		const { getList } = this.props;
-		getList()
+		const { getList, list } = this.props;
+		if (!list.length) {
+			getList()
+		}
 	}
 	render() {
 		const { age, name, list } = this.props;
 		return (
 			<div>
-				<div><Header /></div>
 				{
-					list && list.map(item => <div key={item.id}>{item.title}</div>)
+					list && list.map(item => {
+						return <div key={item.id}>{item.name} <div>{item.content}</div> </div>
+					})
 				}
 			</div>
 		)
